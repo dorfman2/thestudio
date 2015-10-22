@@ -12,9 +12,9 @@ GPIO.setup(23, GPIO.IN)
 GPIO.setup(24, GPIO.IN)
 GPIO.setup(25, GPIO.IN)
 
-1waspressed = 0
-2waspressed = 0
-3waspressed = 0
+waspressed1 = 0
+waspressed2 = 0
+waspressed3 = 0
 
 t1 = 190.0
 t2 = 71.0
@@ -52,40 +52,40 @@ def background3():
         b3.start()
 
 def backgroundlong1():
-        b1 = Timer(t2, background1)
+        bl1 = Timer(t2, background1)
         p1 = Timer(t2, pressreset1)
-        b1.start()
+        bl1.start()
         p1.start()
-        global 1waspressed
-        1waspressed = 1
+        global waspressed1
+        waspressed1 = 1
         
 def backgroundlong2():
-        b2 = Timer(t4, background2)
+        bl2 = Timer(t4, background2)
         p2 = Timer(t4, pressreset2)
-        b2.start()
+        bl2.start()
         p2.start()
-        global 2waspressed
-        2waspressed = 1
+        global waspressed2
+        waspressed2 = 1
         
 def backgroundlong3():
-        b3 = Timer(t6, background3)
+        bl3 = Timer(t6, background3)
         p3 = Timer(t6, pressreset3)
-        b3.start()
+        bl3.start()
         p3.start()
-        global 3waspressed
-        3waspressed = 1
+        global waspressed3
+        waspressed3 = 1
 
 def pressreset1():
-        global 1waspressed
-        1waspressed = 0
+        global waspressed1
+        waspressed1 = 0
         
 def pressreset2():
-        global 2waspressed
-        2waspressed = 0
+        global waspressed2
+        waspressed2 = 0
         
 def pressreset3():
-        global 3waspressed
-        3waspressed = 0
+        global waspressed3
+        waspressed3 = 0
 
 def startupdelay():
         os.system('sudo amixer sset Master 100% &')
@@ -97,9 +97,10 @@ def startupdelay():
 global b1
 global b2
 global b3
-b1 = Timer(30.0, background1)
-b2 = Timer(30.0, background2)
-b3 = Timer(30.0, background3)
+
+b1 = Timer(t1, background1)
+b2 = Timer(t3, background2)
+b3 = Timer(t5, background3)
 d = Timer(30.0, startupdelay)
 
 
