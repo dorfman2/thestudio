@@ -40,13 +40,13 @@ def background1():
         b1.start()
         
 def background2():
-        os.system('aplay cat_nat_1.wav &')
+        os.system('aplay cat_nat_2.wav &')
         global b2
         b2 = Timer(t3, background2)
         b2.start()
         
 def background3():
-        os.system('aplay cafe_nat_1.wav &')
+        os.system('aplay cafe_nat_2.wav &')
         global b3
         b3 = Timer(t5, background3)
         b3.start()
@@ -101,7 +101,7 @@ global b3
 b1 = Timer(t1, background1)
 b2 = Timer(t3, background2)
 b3 = Timer(t5, background3)
-d = Timer(30.0, startupdelay)
+d = Timer(1.0, startupdelay)
 
 
 # MAIN BODY
@@ -110,20 +110,17 @@ d.start()
 
 while True:
         if (GPIO.input(23) == False and waspressed1 == 0):
-                os.system('aplay HeartThrob.wav &')
-                os.system('aplay gloria.wav &')
+                os.system('aplay bird_mus_1.wav &')
                 b1.cancel()
                 backgroundlong1()
 
         if (GPIO.input(24) == False and waspressed2 == 0):
-                os.system('aplay HeartThrob.wav &')
-                os.system('aplay gloria.wav &')
+                os.system('aplay cat_mus_1.wav &')
                 b2.cancel()
                 backgroundlong2()
                 
         if (GPIO.input(25) == False and waspressed3 == 0):
-                os.system('aplay HeartThrob.wav &')
-                os.system('aplay gloria.wav &')
+                os.system('aplay cafe_mus_1.wav &')
                 b3.cancel()
                 backgroundlong3()               
 
