@@ -1,6 +1,5 @@
-#!/usr/bin/env python
 
-###By Jeff Dorfman for DC Artomatic 2015
+#!/usr/bin/env python
 
 import os
 from threading import Timer
@@ -22,7 +21,7 @@ def debugtimer():
         today = datetime.datetime.time(datetime.datetime.now())
         timestamp.append(today)
         print str(timestamp[0])
-        debug = Timer(1800.0, debugtimer)
+        debug = Timer(30.0, debugtimer)
         debug.start()
 
 def background():
@@ -48,15 +47,10 @@ def startupdelay():
         background()
         debugtimer()
 
+global t
+t = Timer(30.0, background)
 a = Timer(30.0, startupdelay)
 
-
-def startupdelay():
-        os.system('amixer sset Master 100% &')
-        background()
-        debugtimer()
-
-a = Timer(30.0, startupdelay)
 
 # MAIN BODY
 
@@ -73,3 +67,5 @@ while True:
                 backgroundlong()
 
         sleep(1)
+
+
