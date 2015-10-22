@@ -16,11 +16,11 @@ waspressed1 = 0
 waspressed2 = 0
 waspressed3 = 0
 
-t1 = 190.0
+t1 = 150.0
 t2 = 71.0
-t3 = 73.0
-t4 = 64.0
-t5 = 199.0
+t3 = 120.0
+t4 = 66.0
+t5 = 240.0
 t6 = 68.0
 
 # Timer Setup
@@ -34,19 +34,19 @@ def debugtimer():
         debug.start()
 
 def background1():
-        os.system('aplay bird_nat_1.wav &')
+        os.system('aplay bird_nat_2.wav &')
         global b1
         b1 = Timer(t1, background1)
         b1.start()
         
 def background2():
-        os.system('aplay cat_nat_2.wav &')
+        os.system('aplay cat_nat_3.wav &')
         global b2
         b2 = Timer(t3, background2)
         b2.start()
         
 def background3():
-        os.system('aplay cafe_nat_2.wav &')
+        os.system('aplay cafe_nat_3.wav &')
         global b3
         b3 = Timer(t5, background3)
         b3.start()
@@ -115,7 +115,7 @@ while True:
                 backgroundlong1()
 
         if (GPIO.input(24) == False and waspressed2 == 0):
-                os.system('aplay cat_mus_1.wav &')
+                os.system('aplay cat_mus_2.wav &')
                 b2.cancel()
                 backgroundlong2()
                 
