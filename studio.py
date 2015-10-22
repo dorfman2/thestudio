@@ -109,19 +109,19 @@ d = Timer(30.0, startupdelay)
 d.start()
 
 while True:
-        if (GPIO.input(23) == False and 1waspressed == 0):
+        if (GPIO.input(23) == False and waspressed1 == 0):
                 os.system('aplay HeartThrob.wav &')
                 os.system('aplay gloria.wav &')
                 b1.cancel()
                 backgroundlong1()
 
-        if (GPIO.input(24) == False and 2waspressed == 0):
+        if (GPIO.input(24) == False and waspressed2 == 0):
                 os.system('aplay HeartThrob.wav &')
                 os.system('aplay gloria.wav &')
                 b2.cancel()
                 backgroundlong2()
                 
-        if (GPIO.input(25) == False and 3waspressed == 0):
+        if (GPIO.input(25) == False and waspressed3 == 0):
                 os.system('aplay HeartThrob.wav &')
                 os.system('aplay gloria.wav &')
                 b3.cancel()
