@@ -18,14 +18,14 @@ waspressed2 = 0
 waspressed3 = 0
 waspressed4 = 0
 
-t1 = 150.0
-t2 = 71.0
-t3 = 120.0
-t4 = 66.0
-t5 = 240.0
-t6 = 68.0
-t7 = 68.0
-t8 = 68.0
+t1 = 141.0
+t2 = 70.0
+t3 = 128.0
+t4 = 70.0
+t5 = 199.0
+t6 = 90.0
+t7 = 176.0
+t8 = 85.0
 
 # Timer Setup
 
@@ -38,19 +38,19 @@ def debugtimer():
         debug.start()
 
 def background1():
-        os.system('aplay bird_nat_2.wav &')
+        os.system('aplay bird_nat_4.wav &')
         global b1
         b1 = Timer(t1, background1)
         b1.start()
         
 def background2():
-        os.system('aplay cat_nat_3.wav &')
+        os.system('aplay cat_nat_4.wav &')
         global b2
         b2 = Timer(t3, background2)
         b2.start()
         
 def background3():
-        os.system('aplay cafe_nat_3.wav &')
+        os.system('aplay cafe_nat_4.wav &')
         global b3
         b3 = Timer(t5, background3)
         b3.start()
@@ -85,7 +85,7 @@ def backgroundlong3():
         global waspressed3
         waspressed3 = 1
         
-def backgroundlong3():
+def backgroundlong4():
         bl4 = Timer(t8, background4)
         p4 = Timer(t8, pressreset4)
         bl4.start()
@@ -110,7 +110,7 @@ def pressreset4():
         waspressed4 = 0
         
 def startupdelay():
-        # os.system('sudo amixer sset Master 100% &')
+        os.system('amixer sset Master 100 &')
         background1()
         background2()
         background3()
@@ -126,7 +126,7 @@ b1 = Timer(t1, background1)
 b2 = Timer(t3, background2)
 b3 = Timer(t5, background3)
 b4 = Timer(t7, background4)
-d = Timer(1.0, startupdelay)
+d = Timer(15.0, startupdelay)
 
 
 # MAIN BODY
@@ -135,17 +135,17 @@ d.start()
 
 while True:                     
         if (GPIO.input(18) == False and waspressed1 == 0):
-                os.system('aplay bird_mus_1.wav &')
+                os.system('aplay bird_mus_4.wav &')
                 b1.cancel()
                 backgroundlong1()
 
         if (GPIO.input(23) == False and waspressed2 == 0):
-                os.system('aplay cat_mus_2.wav &')
+                os.system('aplay cat_mus_4.wav &')
                 b2.cancel()
                 backgroundlong2()
                 
         if (GPIO.input(24) == False and waspressed3 == 0):
-                os.system('aplay cafe_mus_1.wav &')
+                os.system('aplay cafe_mus_4.wav &')
                 b3.cancel()
                 backgroundlong3()  
                         
@@ -154,4 +154,4 @@ while True:
                 b4.cancel()
                 backgroundlong4()     
 
-        sleep(0.8)
+        sleep(0.2)
