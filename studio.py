@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 
 import os
@@ -17,6 +16,13 @@ GPIO.setup(25, GPIO.IN)
 2waspressed = 0
 3waspressed = 0
 
+t1 = 190.0
+t2 = 71.0
+t3 = 73.0
+t4 = 64.0
+t5 = 199.0
+t6 = 68.0
+
 # Timer Setup
 
 def debugtimer():
@@ -28,42 +34,42 @@ def debugtimer():
         debug.start()
 
 def background1():
-        os.system('aplay longbell.wav &')
+        os.system('aplay bird_nat_1.wav &')
         global b1
-        b1 = Timer(30.0, background1)
+        b1 = Timer(t1, background1)
         b1.start()
         
 def background2():
-        os.system('aplay longbell.wav &')
+        os.system('aplay cat_nat_1.wav &')
         global b2
-        b2 = Timer(30.0, background2)
+        b2 = Timer(t3, background2)
         b2.start()
         
 def background3():
-        os.system('aplay longbell.wav &')
+        os.system('aplay cafe_nat_1.wav &')
         global b3
-        b3 = Timer(30.0, background3)
+        b3 = Timer(t5, background3)
         b3.start()
 
 def backgroundlong1():
-        b1 = Timer(90.0, background1)
-        p1 = Timer(90.0, pressreset1)
+        b1 = Timer(t2, background1)
+        p1 = Timer(t2, pressreset1)
         b1.start()
         p1.start()
         global 1waspressed
         1waspressed = 1
         
 def backgroundlong2():
-        b2 = Timer(90.0, background2)
-        p2 = Timer(90.0, pressreset2)
+        b2 = Timer(t4, background2)
+        p2 = Timer(t4, pressreset2)
         b2.start()
         p2.start()
         global 2waspressed
         2waspressed = 1
         
 def backgroundlong3():
-        b3 = Timer(90.0, background3)
-        p3 = Timer(90.0, pressreset3)
+        b3 = Timer(t6, background3)
+        p3 = Timer(t6, pressreset3)
         b3.start()
         p3.start()
         global 3waspressed
@@ -82,7 +88,7 @@ def pressreset3():
         3waspressed = 0
 
 def startupdelay():
-        os.system('amixer sset Master 100% &')
+        os.system('sudo amixer sset Master 100% &')
         background1()
         background2()
         background3()
@@ -121,5 +127,3 @@ while True:
                 backgroundlong3()               
 
         sleep(0.8)
-
-
